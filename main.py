@@ -198,7 +198,8 @@ def main():
     widgets: WidgetRef = {}
     config = json.loads(CONFIG_JSON)
     build_ui(config, widgets)
-    ui.run(reload=False, native=False)  # set native=True if pywebview installed
-
+    # ui.run(reload=False, native=False)  # set native=True if pywebview installed
+    PORT = int(os.environ.get("PORT", 8080))  # Render assigns PORT
+    ui.run(host='0.0.0.0', port=PORT)
 if __name__ in {"__main__", "__mp_main__"}:
     main()
